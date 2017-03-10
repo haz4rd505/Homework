@@ -1,7 +1,7 @@
 ##BEE 6940 Hmwk 3
 library(xlsx)
 OTprcp <- read.xlsx('C:/Users/kmd266/Documents/BEE6940/Ontario.prcp.xlsx',sheetName = 'Ontario.prcp.txt')
-
+OTprcp <- read.xlsx('c:/Users/Kenji/Documents/R/Homework/Ontario.prcp.xlsx',sheetName= 'Ontario.prcp.txt')
 ##STANDARDIZE THE DATA
 gage1<-scale(as.numeric(as.character(OTprcp$Gage1)),center=TRUE,scale=TRUE)
 gage2<-scale(as.numeric(as.character(OTprcp$Gage2)),center=TRUE,scale=TRUE)
