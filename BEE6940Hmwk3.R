@@ -29,5 +29,5 @@ qqline(gage3)
 qqnorm(gage4,main='Gage1 QQplot')
 qqline(gage4)
 #PLOT HISTOGRAM AND Q-Q plot for log-transformed data.
-
+log(gage1)
 
