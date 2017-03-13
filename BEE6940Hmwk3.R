@@ -72,3 +72,21 @@ shapiro.test(ln_gage4)
 
 
 
+ 
+
+# Calculating the Covariance of the log-transformed data ------------------
+loggages <- cbind(ln_gage1,ln_gage2,ln_gage3,ln_gage4)
+S <- cov(loggages,use='pairwise.complete')
+invS <- solve(S)
+
+D.sq<- c()
+for (i in 1:31) {
+  
+  D.sq[i] <- t(loggages[i,])%*%invS%*%loggages[i,]
+}
+
+
+rchisq(n=31,4)
+
+qqplot(D.sq,rchisq(31,4), main = "Q-Q plot for D^2")
+qqline(D.sq,distribution=function(p) qchisq(p,df=4))
