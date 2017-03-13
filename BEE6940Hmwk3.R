@@ -90,3 +90,38 @@ rchisq(n=31,4)
 
 qqplot(D.sq,rchisq(31,4), main = "Q-Q plot for D^2")
 qqline(D.sq,distribution=function(p) qchisq(p,df=4))
+
+
+ks.test(D.sq,"pchisq",df=4)
+
+
+
+# Gap Filling missing data ------------------------------------------------
+
+g1 <- as.numeric(as.character(OTprcp$Gage1))
+g2 <- as.numeric(as.character(OTprcp$Gage2))
+g3 <- as.numeric(as.character(OTprcp$Gage3))
+g4 <- as.numeric(as.character(OTprcp$Gage4))
+
+datmat <- cbind(g1,g2,g3,g4)
+pick <- 4
+mu1 <- mean(datmat[,pick],na.rm = T)
+dat2<- datmat[,-pick]
+datmeans <- colMeans(dat2,na.rm=T)
+dat<-cbind(datmat[,pick],dat2)
+covy <- cov(dat,use='pairwise.complete')
+munew <- mu1 + covy[2:4,1]%*%solve(covy[2:4,2:4])%*%(dat[9,2:4]-datmeans)
+
+match(NA,g4)
+
+gap_filler(x,cov,)
+
+
+
+
+
+
+
+
+
+
