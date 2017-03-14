@@ -1,7 +1,7 @@
 ##BEE 6940 Hmwk 3
 library(xlsx)
 OTprcp <- read.xlsx('C:/Users/kmd266/Documents/BEE6940/Ontario.prcp.xlsx',sheetName = 'Ontario.prcp.txt')
-#OTprcp <- read.xlsx('c:/Users/Kenji/Documents/R/Homework/Ontario.prcp.xlsx',sheetName= 'Ontario.prcp.txt')
+OTprcp <- read.xlsx('c:/Users/Kenji/Documents/R/Homework/Ontario.prcp.xlsx',sheetName= 'Ontario.prcp.txt')
 ##STANDARDIZE THE DATA
 gage1<-scale(as.numeric(as.character(OTprcp$Gage1)),center=TRUE,scale=TRUE)
 gage2<-scale(as.numeric(as.character(OTprcp$Gage2)),center=TRUE,scale=TRUE)
@@ -112,7 +112,10 @@ dat<-cbind(datmat[,pick],dat2)
 covy <- cov(dat,use='pairwise.complete')
 munew <- mu1 + covy[2:4,1]%*%solve(covy[2:4,2:4])%*%(dat[9,2:4]-datmeans)
 
-match(NA,g4)
+g1NA<-which(is.na(g1)==TRUE)
+g2NA<-which(is.na(g2)==TRUE)
+g3NA<-which(is.na(g3)==TRUE)
+g4NA<-which(is.na(g4)==TRUE)
 
 gap_filler(x,cov,)
 
